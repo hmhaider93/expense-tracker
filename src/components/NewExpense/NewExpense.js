@@ -1,12 +1,20 @@
 import ExpenseForm from "./ExpenseForm";
-import './NewExpense.css'
+import "./NewExpense.css";
 
-const NewExpense = ()=>{
-return (
-    <div className="new-expense">
-        <ExpenseForm></ExpenseForm>
-    </div>
-);
+const NewExpense = (props) => {
+	const saveExpenseFormHandler = (savedExpenseData) => {
+		const expenseData = {
+			...savedExpenseData,
+			id: Math.random().toString(),
+		};
+		props.onExpenseSubmit(expenseData);
+	};
+
+	return (
+		<div className="new-expense">
+			<ExpenseForm onSaveExpenseForm={saveExpenseFormHandler} />
+		</div>
+	);
 };
 
 export default NewExpense;
