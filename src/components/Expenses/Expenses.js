@@ -21,14 +21,16 @@ function Expenses(props) {
 				setFilterValue={selectedYear}
 				onExpenseFilterSelect={expenseFilterSelectHandler}
 			/>
-			{filteredExpenses.map((expense) => (
+			{filteredExpenses.length > 0 ? filteredExpenses.map((expense) => (
 				<ExpenseItem
 					key={expense.id}
 					title={expense.title}
 					amount={expense.amount}
 					date={expense.date}
 				/>
-			))}
+			)
+			): <h2>Content not found</h2>
+			}
 		</Card>
 	);
 }
